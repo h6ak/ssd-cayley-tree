@@ -1,0 +1,13 @@
+set xlabel "{/Symbol m}"
+set ylabel "|n_0 - n_{exact}|"
+
+z=3
+
+set logscale y
+set key outside right bottom
+
+set label 1 sprintf("z=%d", z) at 2,3e-8 center
+
+plot sprintf("%d-10-sc.txt", z) u 1:(abs($3-$5)) every 2 pt 2 title "M=10",\
+sprintf("%d-20-sc.txt", z) u 1:(abs($3-$5)) every 2 pt 6 title "M=20",\
+sprintf("%d-50-sc.txt", z) u 1:(abs($3-$5)) every 2 pt 9 title "M=50"

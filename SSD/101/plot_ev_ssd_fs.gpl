@@ -1,0 +1,51 @@
+set term aqua enhanced font "times-roman, 20"
+
+z = 3; M = 4
+flag = 3
+
+mu = 0
+idx = 0
+set xrange[*:*]
+set yrange[*:*]
+
+if(flag == 0){
+  mu = 0
+  idx = flag
+  set xrange[14:33]
+  set yrange[-0.2:0.2]
+  lx = 23; ly = 0.1
+}
+if(flag == 1){
+  mu = 0.5
+  idx = flag
+  set xrange[15:35]
+  set yrange[-0.1:0.1]
+  lx = 25; ly = 0.05
+}
+if(flag == 2){
+  mu = 1
+  idx = flag
+  set xrange[17:35]
+  set yrange[-0.1:0.1]
+  lx = 26; ly = 0.05
+}
+if(flag == 3){
+  mu = 1.5
+  idx = flag
+  set xrange[17:35]
+  set yrange[-0.2:0.2]
+  lx = 26; ly = 0.1
+}
+
+set title "one-particle eigenvalue distribution under SSD"
+set xlabel "index i"
+set ylabel "eigenvalue E"
+
+set key center top
+set label 1 sprintf("z=%d, M=%d, {/Symbol m}=%g", z, M, mu) center at lx,ly
+
+unset logscale y
+plot \
+0 notitle lc 2,\
+"ev_ssd.txt" index idx u 1:4 title "direct" lc 1 ps 1 pt 4,\
+"" index idx u 1:5 title "via block" lc 3 ps 1 pt 5

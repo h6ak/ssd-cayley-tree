@@ -1,0 +1,9 @@
+new_atan(x) = (x>=0) ? atan(x) : atan(x)+pi
+
+tht(z,m) = acos( -m/(2*sqrt(z-1)) )
+
+n_BL(z,m) = ( z*tht(z,m) - (z-2)*new_atan( z*tan(tht(z,m))/(z-2) ) )/(2*pi)
+e_BL(z,m) = (-1) * ( sqrt(4*(z-1)-m**2) - (z-2)*new_atan( sqrt(4*(z-1)-m**2)/(z-2) ) )/pi
+
+#plot n_BL(3,x), "../../Mahan/EG_z-3.txt" u 1:2 w l
+#plot e_BL(3,x), "../../Mahan/EG_z-3.txt" u 1:(2*($3)/3) w l

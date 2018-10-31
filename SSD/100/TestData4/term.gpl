@@ -1,0 +1,2 @@
+#set term aqua enhanced font "Arial, 25"
+set term postscript eps enhanced font "Courier" 25

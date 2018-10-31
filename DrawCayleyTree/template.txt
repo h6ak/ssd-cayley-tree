@@ -1,0 +1,40 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: CayleyTree
+%%Creator: H.Hotta
+%%CreationDate: (Unknown)
+%%BoundingBox: 0 0 300 300
+%%Pages: 1
+%%EndComments
+
+/c {
+  /y exch def
+  /x exch def
+  newpath
+  x y 5 0 360 arc
+  gsave
+  0 0 1 setrgbcolor
+  fill
+  grestore
+  0 0 0 setrgbcolor
+  stroke
+} def
+
+/p {
+  /y1 exch def
+  /x1 exch def
+  /y0 exch def
+  /x0 exch def
+  newpath
+  x0 y0 moveto
+  x1 y1 lineto
+  0 0 0 setrgbcolor
+  stroke
+} def
+
+/Helvetica findfont
+0 0 0 setrgbcolor
+8 scalefont
+setfont
+210 10 moveto
+(Created by H. Hotta) show
+

@@ -1,0 +1,20 @@
+d = "../../002/Data/3-8-sc/"
+d2 = "3-7-sc/"
+t = "_mu-1.txt"
+
+q = "dens_path"
+q2 = "BondCorr_path"
+
+set title "dens"
+do for[idx=0:4]{
+plot d.q.t index idx u ($1-1):2 w lp,\
+d2.q.t index idx u 1:2 w lp
+pause(-1)
+}
+
+set title "BondCorr"
+do for[idx=0:4]{
+plot d.q2.t index idx u ($1-1):2 w lp,\
+d2.q2.t index idx u 1:2 w lp
+pause(-1)
+}

@@ -1,0 +1,29 @@
+z = 3
+#mu = "0"
+mu = "0.5"
+M = 20
+
+set xrange[0:M]
+set yrange[0.45:0.8]
+set xtics 5
+set format y "%1.2f"
+
+d2 = sprintf("%d-%d-sc/", z, M);
+t = sprintf("_mu-%s.txt", mu);
+
+q = "dens_path"
+#q = "BondCorr_path"
+
+lx = 5
+#ly = 0.62
+ly=0.77
+set label 1 center at lx,ly sprintf("{/Symbol m}=%s", mu)
+set key center top
+
+set xlabel "shell index s"
+set ylabel "n_s"
+
+load "exact.gpl"
+
+plot d2.q.t index 0 u 1:2 w lp title "OBC" pt 4 ps 2 lt 3 lw 3,\
+n_BL(3,0.5) lt 1 lw 3 title "BL"

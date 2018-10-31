@@ -1,0 +1,40 @@
+z = 3
+mu_val = 0.5
+mu = sprintf("%g", mu_val)
+M = 20
+
+set xrange[0:M]
+#set yrange[-0.60:-0.44]
+set yrange[*:*]
+
+set xtics 5
+set format y "%1.2f"
+
+d2 = sprintf("%d-%d-sc/", z, M);
+t = sprintf("_mu-%s-v4.txt", mu);
+q = "BondCorr_path"
+
+lx = 5
+ly = -0.46
+set label 1 center at lx,ly sprintf("{/Symbol m}=%s", mu)
+set key inside center bottom
+
+set xlabel "shell index s"
+set ylabel "{/Symbol e}_s"
+
+#plot d2.q.t index 0 u 1:2 w lp title "OBC" pt 4 ps 2 lt 3 lw 3,\
+#"" index 2 u 1:2 w lp title "SSD" pt 7 ps 2 lt 3 lw 3,\
+
+load "exact.gpl"
+
+myps = 2
+
+#plot d2.q.t index 1 u 1:2 w lp title "a=1" pt 4 ps myps lt 2 lw 3,\
+#"" index 2 u 1:2 w lp title "a=2" pt 6 ps myps lt 3 lw 3,\
+#"" index 3 u 1:2 w lp title "a=3" pt 8 ps myps lt 4 lw 3,\
+#e_BL(3, mu_val) lt 1 lw 3 title "BL"
+
+plot for [i=0:5] d2.q.t index i u 1:2 w lp title sprintf("a=%d",i),\
+e_BL(3, mu_val) title "BL"
+
+

@@ -1,0 +1,17 @@
+reset
+
+M=20
+
+f(x) = sin(pi*(x+M+0.5)/(2*M+1))**2
+
+set xrange[0:M]
+set lmargin 10
+set rmargin 2
+
+set size 1, 0.5
+#set label 2 center at 17,0.8 "(a)"
+set xlabel "s" offset 0,1.5
+set xtics ("0" 0, "M" M)
+set ylabel "f_s"
+set ytics 1
+plot f(x) notitle

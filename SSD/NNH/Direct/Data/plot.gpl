@@ -1,0 +1,10 @@
+z = 3
+M = 5
+fname = sprintf("energy_%d-%d.txt", z, M)
+
+plot fname index 0,\
+"" index 1,\
+"" index 3,\
+"" index 5,\
+"" index 7,\
+"" index 9

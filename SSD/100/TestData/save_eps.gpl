@@ -1,0 +1,9 @@
+set term postscript eps enhanced font "Courier" 25
+set out "ns_ssd_full.eps"
+load "plot_rho_full.gpl"
+
+set out "ssd.eps"
+load "plot_ssd.gpl"
+
+set term aqua
+set out

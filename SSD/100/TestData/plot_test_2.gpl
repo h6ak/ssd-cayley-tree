@@ -1,0 +1,13 @@
+d2 = "3-50-sc/"
+t = "_mu-0.5.txt"
+
+q = "dens_path"
+q2 = "BondCorr_path"
+
+set title "dens"
+plot for[idx=0:4] d2.q.t index idx u 1:2 w lp title sprintf("%d",idx)
+
+pause(-1)
+
+set title "BondCorr"
+plot for[idx=0:4] d2.q2.t index idx u 1:2 w lp title sprintf("%d",idx)

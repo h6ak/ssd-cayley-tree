@@ -1,0 +1,13 @@
+set xlabel "{/Symbol m}"
+set ylabel "n_0"
+
+set key bottom right
+
+set label 1 "z=3" at 2,0.4 center
+set label 2 "n_0" at -2,0.8 center
+set label 2 font "Courier,40"
+
+plot \
+"3-10-sc.txt" u 1:3 title "M=10" ps 2 pt 2 lw 2,\
+"3-20-sc.txt" u 1:3 title "M=20" ps 2 pt 6 lw 2,\
+"../../Mahan/EG_z-3.txt" u 1:2 w l title "n(BL)" lt 1 lw 4

@@ -1,0 +1,20 @@
+reset
+
+M=20
+
+f(x, a) = sin(pi*(x+M+0.5)/(2*M+1))**a
+
+set xrange[0:M]
+#set lmargin 10
+#set rmargin 2
+
+set key outside right bottom
+
+set size 1, 0.5
+#set label 2 center at 17,0.8 "(a)"
+set xlabel "s" offset 0,1.5
+set xtics ("0" 0, "M" M)
+set ylabel "f_s"
+set ytics 1
+plot for[i=1:5] f(x,i) lt (i+1) lw 3 title sprintf("a=%d",i)
+

@@ -1,0 +1,14 @@
+dirtag = "3-5-sc/"
+quant = "dens"
+#quant = "BondCorr"
+fname = dirtag."dens_all_mu-1e-10.txt"
+
+set title "z=3, M=4"
+#set ylabel "density"
+set ylabel "bond correlation"
+
+set key bottom
+
+plot \
+dirtag.quant."_all_mu-0.5.txt" index 0 w lp title "mu=0.5",\
+dirtag.quant."_all_mu-1.txt" index 1 w lp title "mu=1"

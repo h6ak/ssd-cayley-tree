@@ -1,0 +1,54 @@
+# set parameters
+reset
+z = 3
+mu_val = 0.5
+mu = sprintf("%g", mu_val)
+M = 20
+
+# name of file we read 
+d2 = sprintf("%d-%d-sc/", z, M);
+t = sprintf("_mu-%s-v4.txt", mu);
+q = "BondCorr_path"
+
+load "exact.gpl"
+set multiplot
+
+# first graph
+set xrange[0:M]
+set yrange[*:*]
+
+set xtics 5
+set format y "%1.2f"
+
+lx = 10
+ly = -0.6
+set label 1 center at lx,ly sprintf("{/Symbol m}=%s", mu)
+set key outside right top
+
+set xlabel "shell index s"
+set ylabel "{/Symbol e}_s"
+
+plot e_BL(3, mu_val) lw 3 lc 7 title "BL",\
+for [i=0:5] d2.q.t index i u 1:2 w lp lc (i+1) title sprintf("a=%d",i)
+
+# inset
+set xrange[0:5]
+set xtics 1
+set ytics 0.01
+
+set tmargin 0
+set bmargin 0
+set lmargin 0
+set rmargin 0
+set size 0.3,0.3
+set origin 0.25, 0.63
+unset xlabel
+unset ylabel
+set nokey
+unset label 1
+
+replot
+
+unset multiplot
+
+

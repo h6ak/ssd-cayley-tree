@@ -1,0 +1,32 @@
+### ssd for various z
+
+N = 50
+### flag: [1] density, [2] bond-energy 
+flag = 2
+
+set xrange [-2:2]
+set yrange [1e-7:*]
+
+if(flag == 1) {
+  physq = "n"
+  set ylabel "|n_{calc} - n_{BL}|"
+}
+if(flag == 2) {
+  physq = "e"
+  set ylabel "|{/Symbol e}_{calc} - {/Symbol e}_{BL}|"
+}
+
+set logscale y
+set format y "10^{%L}"
+
+set xlabel "{/Symbol m} / |t| (z-1)^{1/2}"
+set key outside right
+
+set label 1 sprintf("N = %d", N) center at 0, 5e-7
+
+plot sprintf("z3/%d-2-%s.txt", N, physq) u 1:4 w lp title "z=3",\
+sprintf("z4/%d-2-%s.txt", N, physq) u 1:4 w lp title "z=4",\
+sprintf("z5/%d-2-%s.txt", N, physq) u 1:4 w lp title "z=5",\
+sprintf("z10/%d-2-%s.txt", N, physq) u 1:4 w lp title "z=10",\
+sprintf("z50/%d-2-%s.txt", N, physq) u 1:4 w lp title "z=50",\
+sprintf("z100/%d-2-%s.txt", N, physq) u 1:4 w lp title "z=100"

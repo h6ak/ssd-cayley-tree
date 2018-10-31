@@ -1,0 +1,28 @@
+set term aqua enhanced font "times-roman, 20"
+
+z = 3
+M = 4
+
+idx = 3
+
+if(idx==0) mu=0
+if(idx==1) mu = 0.5
+if(idx==2) mu = 1
+if(idx==3) mu = 1.5
+
+xmax = 47
+
+set xrange[0:xmax]
+set yrange[-3-mu:3-mu]
+
+set label 1 sprintf("z=%d, M=%d,\n{/Symbol m}=%g", z, M, mu) right at xmax-2,-1-mu
+set label 2 "E=0" left at 5,0.2
+set key right bottom
+
+set title "one-particle eigenvalue distribution (SSD)"
+set xlabel "i"
+set ylabel "energy E"
+
+plot 0 notitle lc 2,\
+"ev_ssd.txt" index idx u 1:4 title "direct" lc 1 ps 1 pt 4,\
+"" index idx u 1:5 title "via block" lc 3 ps 1 pt 5

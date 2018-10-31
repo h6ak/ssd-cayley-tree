@@ -1,0 +1,15 @@
+set xlabel "{/Symbol m}"
+set ylabel "{/Symbol e}_0"
+
+set key center
+
+z=3
+
+set label 1 sprintf("z=%d",z) at 0,-0.1 center
+set label 2 "{/Symbol e}_0" at -1.7,-0.1 center
+set label 2 font "Courier,40"
+
+plot \
+sprintf("%d-10-sc.txt", z) u 1:(-$2) title "M=10" ps 2 pt 2 lw 2,\
+sprintf("%d-10-sc.txt", z) u 1:(-$2) title "M=20" ps 2 pt 6 lw 2,\
+sprintf("../../Mahan/EG_z-%d.txt", z) u 1:($3*2/z) w l title "{/Symbol e}(BL)" lt 1 lw 4
